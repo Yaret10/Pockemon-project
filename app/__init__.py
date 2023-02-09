@@ -1,5 +1,5 @@
 from flask import Flask
-from src.routes.r_pockemon import pockemon_router
+from app.routes.r_pockemon import pockemon_router
 from flask_sqlalchemy import SQLAlchemy
 from .config import Config
 from flask_migrate import Migrate
