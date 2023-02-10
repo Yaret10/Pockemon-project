@@ -88,3 +88,16 @@ def show_details_id(id):
     found_pokemon = db.pokemon.find_one({"_id": id})
 
     return render_template("pokemon/details-pokemon.html", obj=found_pokemon)
+
+# 3 *************************
+# 3 ** Obtención de todos los Pokemones de la BD MongoDB por NOMBRE ***
+# 3 *************************
+
+
+# 2 Endpoint: http://127.0.0.1:5000/pokemon/details/<string:nombre> --> http://127.0.0.1:5000//pokemon/details/CHARIZARD
+@pokemon_bp.route("/pokemon/details/<string:name>", methods=["GET"])
+def show_details_name(name):
+    name = name.lower()
+    found_pokemon = db.pokemon.find_one({"name": name})
+
+    return render_template("pokemon/details-pokemon.html", obj=found_pokemon)
