@@ -60,3 +60,31 @@ def save_data():
         return redirect(url_for("pokemon.get_all"))
 
     return render_template("pokemon/create-pokemon.html")
+
+
+# 3 *************************************************************************
+# 3 *********** Obtención de todos los Pokemones de la BD MongoDB ***********
+# 3 *************************************************************************
+
+
+# 2 Endpoint: http://127.0.0.1:5000/pokemon/list
+@pokemon_bp.route("/pokemon/list")
+def get_all():
+    from pymongo import ASCENDING
+
+    pokemon_list = db.pokemon.find().sort("id", ASCENDING)
+
+    return render_template("pokemon/list-pokemon.html", pokemon_list_vw=pokemon_list)
+
+
+# 3 *************************************************************************
+# 3 ******* Obtención de todos los Pokemones de la BD MongoDB por ID ********
+# 3 *************************************************************************
+
+
+# 2 Endpoint: http://127.0.0.1:5000/pokemon/details/<int:id> --> http://127.0.0.1:5000//pokemon/details/2
+@pokemon_bp.route("/pokemon/details/<int:id>", methods=["GET"])
+def show_details_id(id):
+    found_pokemon = db.pokemon.find_one({"_id": id})
+
+    return render_template("pokemon/details-pokemon.html", obj=found_pokemon)
