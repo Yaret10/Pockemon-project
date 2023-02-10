@@ -7,15 +7,15 @@ from app.databases import db
 from app.models.pokemon import Pokemon
 
 
-pokemon_bp = Blueprint("pokemon", _name_)
+pokemon_bp = Blueprint("pokemon", __name__)
 
 
 POKEMON_URL = "https://pokeapi.co/api/v2/pokemon/"
 
 
-# 3 *************************
-# 3 ***** Copiado de la BD de Pokemon a la BD MongoDB *****
-# 3 *************************
+#  *******************************************************
+#  ***** Copiado de la BD de Pokemon a la BD MongoDB *****
+#  *******************************************************
 
 
 def retrieve_id():
@@ -49,7 +49,7 @@ def populate_pokemon(id):
     return Pokemon(_id, name, weight, height, base_experience, order)
 
 
-# 2 Endpoint: http://127.0.0.1:5000/pokemon/save
+#  Endpoint: http://127.0.0.1:5000/pokemon/save
 @pokemon_bp.route("/pokemon/save", methods=["GET", "POST"])
 def save_data():
     if request.method == "POST":
@@ -62,9 +62,9 @@ def save_data():
     return render_template("pokemon/create-pokemon.html")
 
 
-# 3 *************************************************************************
-# 3 *********** Obtención de todos los Pokemones de la BD MongoDB ***********
-# 3 *************************************************************************
+#  *************************************************************************
+#  *********** Obtención de todos los Pokemones de la BD MongoDB ***********
+#  *************************************************************************
 
 
 # 2 Endpoint: http://127.0.0.1:5000/pokemon/list
@@ -77,24 +77,25 @@ def get_all():
     return render_template("pokemon/list-pokemon.html", pokemon_list_vw=pokemon_list)
 
 
-# 3 *************************************************************************
-# 3 ******* Obtención de todos los Pokemones de la BD MongoDB por ID ********
-# 3 *************************************************************************
+#  *************************************************************************
+#  ******* Obtención de todos los Pokemones de la BD MongoDB por ID ********
+#  *************************************************************************
 
 
-# 2 Endpoint: http://127.0.0.1:5000/pokemon/details/<int:id> --> http://127.0.0.1:5000//pokemon/details/2
+#  Endpoint: http://127.0.0.1:5000/pokemon/details/<int:id> --> http://127.0.0.1:5000//pokemon/details/2
 @pokemon_bp.route("/pokemon/details/<int:id>", methods=["GET"])
 def show_details_id(id):
     found_pokemon = db.pokemon.find_one({"_id": id})
 
     return render_template("pokemon/details-pokemon.html", obj=found_pokemon)
 
-# 3 *************************
-# 3 ** Obtención de todos los Pokemones de la BD MongoDB por NOMBRE ***
-# 3 *************************
+
+#  *******************************************************************
+#  ** Obtención de todos los Pokemones de la BD MongoDB por NOMBRE ***
+#  *******************************************************************
 
 
-# 2 Endpoint: http://127.0.0.1:5000/pokemon/details/<string:nombre> --> http://127.0.0.1:5000//pokemon/details/CHARIZARD
+#  Endpoint: http://127.0.0.1:5000/pokemon/details/<string:nombre> --> http://127.0.0.1:5000//pokemon/details/CHARIZARD
 @pokemon_bp.route("/pokemon/details/<string:name>", methods=["GET"])
 def show_details_name(name):
     name = name.lower()
