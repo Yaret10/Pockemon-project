@@ -57,6 +57,28 @@ Obtención de todos los Pokemones de la BD MongoDB por NOMBRE:
 http://127.0.0.1:5000/pokemon/details/<string:nombre>
 ```
 
+Con respecto a los Pokedex:
+```
+Copiado de la BD de Pokedex a la BD MongoDB:
+
+http://127.0.0.1:5000/pokedex/save
+```
+```
+Obtención de todos los Pokedex de la BD MongoDB:
+
+http://127.0.0.1:5000/pokedex/list
+```
+```
+Obtención de todos los Pokedex de la BD MongoDB por ID:
+
+http://127.0.0.1:5000/pokedex/details/<int:id>
+```
+```
+Obtención de todos los Pokedex de la BD MongoDB por NOMBRE:
+
+http://127.0.0.1:5000/pokedex/details/<string:nombre>
+```
+
 ## Authors
 
 - [Mijail Denis Zavala Llanco](https://github.com/MIDEZA-22)
