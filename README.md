@@ -1,4 +1,3 @@
-
 # Pokemon Project
 
 Se plantea hacer una copia de la base de datos de la PokeAPI hacia una propia en la nube, posterior a ello implementar las rutas principales que ofrece la PokeAPI:
