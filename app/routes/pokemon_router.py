@@ -67,7 +67,7 @@ def save_data():
 #  *************************************************************************
 
 
-# 2 Endpoint: http://127.0.0.1:5000/pokemon/list
+#  Endpoint: http://127.0.0.1:5000/pokemon/list
 @pokemon_bp.route("/pokemon/list")
 def get_all():
     from pymongo import ASCENDING
