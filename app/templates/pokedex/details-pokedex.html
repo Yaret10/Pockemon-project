@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+Detalles Pokedex
+{% endblock %}
+
+{% block content %}
+  <div class="mt-5" style="max-width: 400px;">
+    <div class="card">
+      <div class="card-header" align="center">
+        Detalle del Pokedex:<strong class="text-uppercase"> {{obj.name}} </strong>
+      </div>
+      <div class="card-body" align="left">
+        <ul class="list-group">
+          <ul class="list-group-item"><small class="text-muted">Description: </small>{{obj.descriptions}}</ul>
+        </ul>
+      </div>
+      <div class="card-footer" align="center">
+        <div class="float-center">
+          <a href="/pokedex/list" class="btn btn-info">Atras</a>
+          <button class="btn btn-warning ">Editar</button>
+          <button class="btn btn-danger">Eliminar</button>
+        </div>
+      </div>
+    </div>  
+  </div>
+{% endblock %}
