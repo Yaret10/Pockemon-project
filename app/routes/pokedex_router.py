@@ -66,3 +66,45 @@ def save_data():
         return redirect(url_for("pokedex.get_all"))
 
     return render_template("pokedex/create-pokedex.html")
+
+
+#  *************************************************************************
+#  ************ Obtención de todos los Pokedex de la BD MongoDB ************
+#  *************************************************************************
+
+
+#  Endpoint: http://127.0.0.1:5000/pokedex/list
+@pokedex_bp.route("/pokedex/list")
+def get_all():
+    from pymongo import ASCENDING
+
+    pokedex_list = db.pokedex.find().sort("id", ASCENDING)
+
+    return render_template(LIST_POKEDEX, pokedex_list_vw=pokedex_list)
+
+
+#  *************************************************************************
+#  ******* Obtención de todos los Pokedex de la BD MongoDB por ID ********
+#  *************************************************************************
+
+
+#  Endpoint: http://127.0.0.1:5000/pokedex/list/<int:id> --> http://127.0.0.1:5000//pokedex/list/1
+@pokedex_bp.route("/pokedex/details/<int:id>", methods=["GET"])
+def show_details_id(id):
+    found_pokedex = db.pokedex.find_one(id)
+
+    return render_template("pokedex/details-pokedex.html", obj=found_pokedex)
+
+
+#  *************************************************************************
+#  ****** Obtención de todos los Pokedex de la BD MongoDB por NOMBRE *******
+#  *************************************************************************
+
+
+#  Endpoint: http://127.0.0.1:5000/pokedex/list/<string:nombre> --> http://127.0.0.1:5000//pokedex/list/ORIGINAL-ULAULA
+@pokedex_bp.route("/pokedex/details/<string:name>", methods=["GET"])
+def show_details_name(name):
+    name = name.lower()
+    found_pokedex = db.pokedex.find_one({"name": name})
+
+    return render_template("pokedex/details-pokedex.html", obj=found_pokedex)
