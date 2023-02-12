@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}
+Lista Pokemon
+{% endblock %}
+
+{% block content %}
+  <div class="mt-5">
+    <div class="album">
+      <div class="row">
+        {% for obj in pokemon_list_vw %}
+          <div class="col-md-3">
+            <div class="card mb-4" style="max-width: 580px;">
+              <div class="row">
+                <div class="card-body" align="center">
+                  <h5 class="card-title">{{ obj.name.upper() }}</h5>                                 
+                  <a type="button" class="btn btn-sm btn-outline-secondary mt-1" href="/pokemon/details/{{ obj._id }}">Detalles</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>  
+  </div>
+{% endblock %}
