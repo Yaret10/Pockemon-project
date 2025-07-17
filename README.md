@@ -80,7 +80,7 @@ http://127.0.0.1:5000/pokedex/details/<string:nombre>
 
 ## Authors
 
-- [Mijail Denis Zavala Llanco](https://github.com/MIDEZA-22)
+- [Mijail Zavala Llanco](https://github.com/MIDEZA-22)
 - [Gerson Daniel Vargas Polo](https://github.com/Gersaurio)
 - [César Yaret Chuica Cordero](https://github.com/Yaret10)
 - [Jordy Cruz Suasnabar](https://github.com/dyjhor014)
